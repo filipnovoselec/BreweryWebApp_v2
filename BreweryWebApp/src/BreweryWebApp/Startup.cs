@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Stormpath.AspNetCore;
+using Stormpath.Configuration;
+using Stormpath.Configuration.Abstractions;
 
 namespace BreweryWebApp
 {
@@ -33,6 +36,38 @@ namespace BreweryWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddStormpath(new StormpathConfiguration()
+            {
+                Application = new ApplicationConfiguration()
+                {
+                    Href = "https://api.stormpath.com/v1/applications/5mMZufccyTEL1tU4V8ZMnu"
+                },
+                Client = new ClientConfiguration()
+                {
+                    ApiKey = new ClientApiKeyConfiguration()
+                    {
+                        File = "C:\\Users\\filip\\Documents\\BreweryWebApp_v2\\BreweryWebApp_v2\\BreweryWebApp\\src\\BreweryWebApp\\apiKey.properties"
+                    }
+                }
+            });
+
+            //var conf = ConfigurationLoader.Initialize().Load(new StormpathConfiguration()
+            //{
+            //    Application = new ApplicationConfiguration()
+            //    {
+            //        Href = "~\\stormpath.yaml\\application.href"
+            //    },
+            //    Client = new ClientConfiguration()
+            //    {
+            //        ApiKey = new ClientApiKeyConfiguration()
+            //        {
+            //            File = 
+            //        }
+            //    }
+            //});
+
+            //services.AddStormpath();
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
@@ -60,6 +95,8 @@ namespace BreweryWebApp
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+
+            app.UseStormpath();
 
             app.UseMvc(routes =>
             {
