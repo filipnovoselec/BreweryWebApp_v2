@@ -1,12 +1,17 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Pivovara</title>
 
     <script src="~/lib/angular/angular.min.js"></script>
     <script src="~/lib/angular-animate/angular-animate.min.js"></script>
     <script src="~/lib/angular-route/angular-route.min.js"></script>
     <script src="~/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="~/lib/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.js"></script>
+    <script src="~/lib/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.tpls.min.js"></script>
 
     <script src="~/js/site.js"></script>
     <script src="~/js/controllers/indexController.js"></script>
@@ -15,7 +20,7 @@
     <script src="~/js/controllers/loginController.js"></script>
     <script src="~/js/controllers/beerController.js"></script>
 
-    <script src="~/lib/loading-bar/jquery.loadingbar.min.js"></script>
+    @*<script src="~/lib/loading-bar/jquery.loadingbar.min.js"></script>*@
     <script src="~/lib/chart.js/dist/Chart.min.js"></script>
     <script src="~/lib/angular-chart-js/javascript/angular-chart.js"></script>
 
@@ -25,7 +30,7 @@
     <script src="~/lib/flipclock/compiled/flipclock.min.js"></script>
     <script src="~/lib/signalr/jquery.signalR.min.js"></script>
 
-    <link href="~/css/BootstrapTheme.css" rel="stylesheet" />
+    <link href="~/css/bootstrapTheme.css" rel="stylesheet"/>
     <link href="~/css/Site.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -47,12 +52,13 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a ng-hide="!CurrentBeer" ui-sref="beer">Pive u izradi <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a ui-sref="beer">Pive u izradi <span class="sr-only">(current)</span></a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Recepti <span class="caret"></span></a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li data-ng-repeat="recipe in recipeList"><a ui-sref="recipe({name:'{{recipe}}'})">{{recipe}}</a></li>
+                            <li data-ng-repeat="recipe in recipeList"><a ui-sref="recipeDetails({name:'{{recipe}}'})">{{recipe}}</a></li>
+                            <li ><a ui-sref="allRecipes">Prikaži sve</a></li>
                         </ul>
 
                         <!--<ul class="dropdown-menu" role="menu">
@@ -73,11 +79,12 @@
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>-->
-                <!--<ul class="nav navbar-nav navbar-right">
-                    <li ng-hide="!auth"><a>{{auth}}</a></li>
-                    <li ng-hide="auth"><a ui-sref="login">Login</a></li>
-                    <li ng-hide="!auth"><a ng-click="logout()" ui-sref="home">Logout</a></li>
-                </ul>-->
+                <ul class="nav navbar-nav navbar-right">
+                    @*<li ng-hide="!auth"><a>{{auth}}</a></li>*@
+                    <li><a ui-sref="login" if-not-user>Login</a></li>
+                    <li><a ui-sref="home" sp-logout if-user>Logout</a></li>
+                    @*<li ng-hide="!auth"><a ng-click="logout()" ui-sref="home">Logout</a></li>*@
+                </ul>
             </div>
         </div>
     </nav>
