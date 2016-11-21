@@ -18,11 +18,17 @@ BreweryApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '~/templates/loginPage.html',
             controller: 'loginController'
         })
+        //.state('recipes',
+        //{
+        //    url: '/recipes',
+        //    templateUrl: '~/templates/recipesPage.html',
+        //    controller: 'recipesController'
+        //})
         .state('recipe',
         {
-            url: '/recipe/{name}',
+            url: '/recipeDetails/{name}',
             templateUrl: '~/templates/recipeDetailsPage.html',
-            controller: 'recipeController'
+            controller: 'recipeDetailsController'
         })
         .state('beer',
         {
