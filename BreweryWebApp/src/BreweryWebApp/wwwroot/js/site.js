@@ -1,6 +1,13 @@
 ﻿// Write your Javascript code.
 var BreweryApp = angular.module('BreweryApp',
-['ui.router', 'ngAnimate', 'stormpath']);
+['ui.router', 'ngAnimate', 'stormpath', 'stormpath.templates']);
+
+BreweryApp.run(function ($stormpath) {
+    $stormpath.uiRouter({
+        loginState: 'login',
+        defaultPostLoginState: 'home'
+    });
+});
 
 BreweryApp.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
@@ -18,13 +25,13 @@ BreweryApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/templates/loginPage.html',
             controller: 'loginController'
         })
-        //.state('recipes',
-        //{
-        //    url: '/recipes',
-        //    templateUrl: '/templates/recipesPage.html',
-        //    controller: 'recipesController'
-        //})
-        .state('recipe',
+        .state('allRecipes',
+        {
+            url: '/recipes',
+            templateUrl: '/templates/recipesPage.html',
+            controller: 'recipesController'
+        })
+        .state('recipeDetails',
         {
             url: '/recipeDetails/{name}',
             templateUrl: '/templates/recipeDetailsPage.html',
@@ -34,6 +41,9 @@ BreweryApp.config(function($stateProvider, $urlRouterProvider) {
         {
             url: '/beer',
             templateUrl: '/templates/beerPage.html',
-            controller: 'beerController'
+            controller: 'beerController',
+            //sp: {
+            //    authenticate: true
+            //}
         });
 })
