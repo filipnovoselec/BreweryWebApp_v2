@@ -51,22 +51,6 @@ namespace BreweryWebApp
                 }
             });
 
-            //var conf = ConfigurationLoader.Initialize().Load(new StormpathConfiguration()
-            //{
-            //    Application = new ApplicationConfiguration()
-            //    {
-            //        Href = "~\\stormpath.yaml\\application.href"
-            //    },
-            //    Client = new ClientConfiguration()
-            //    {
-            //        ApiKey = new ClientApiKeyConfiguration()
-            //        {
-            //            File = 
-            //        }
-            //    }
-            //});
-
-            //services.AddStormpath();
 
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
