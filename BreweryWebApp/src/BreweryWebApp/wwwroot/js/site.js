@@ -45,5 +45,14 @@ BreweryApp.config(function($stateProvider, $urlRouterProvider) {
             //sp: {
             //    authenticate: true
             //}
+        })
+        .state('administrator',
+        {
+            url: '/admin',
+            templateUrl: '/templates/adminPage.html',
+            controller: 'adminController',
+            sp: {
+                authenticate: true
+            }
         });
 })
