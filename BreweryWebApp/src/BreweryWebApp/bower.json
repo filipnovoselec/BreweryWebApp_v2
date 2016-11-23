@@ -12,7 +12,7 @@
     "angular-ui-router": "*",
     "loading-bar": "*",
     "chart.js": "*",
-    "angular-chart-js": "*",
+    "angular-chart.js": "*",
     "jquery.countdown": "*",
     "flipclock": "*",
     "signalr": "*",

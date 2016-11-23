@@ -1,6 +1,6 @@
 ﻿// Write your Javascript code.
 var BreweryApp = angular.module('BreweryApp',
-['ui.router', 'ngAnimate', 'stormpath', 'stormpath.templates']);
+['ui.router', 'ngAnimate', 'stormpath', 'stormpath.templates', 'chart.js']);
 
 BreweryApp.run(function ($stormpath) {
     $stormpath.uiRouter({
