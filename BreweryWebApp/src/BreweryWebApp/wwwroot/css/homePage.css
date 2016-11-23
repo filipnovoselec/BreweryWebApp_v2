@@ -1,0 +1,18 @@
+﻿body {
+     
+}
+
+#widgets {
+    padding-top: 30px;
+}
+
+#recentBeerWidget {
+    min-height: 300px;
+}
+
+#currentBeerWidget {
+    min-height: 300px;
+}
+#banner {
+    padding-bottom: 400px;
+}
