@@ -11,7 +11,6 @@
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'recipesController';
-
         activate();
 
         function activate() { }
