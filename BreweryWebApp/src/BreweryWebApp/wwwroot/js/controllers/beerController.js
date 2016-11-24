@@ -5,15 +5,17 @@
         .module('BreweryApp')
         .controller('beerController', beerController);
 
-    beerController.$inject = ['$location','spinnerService']; 
+    beerController.$inject = ['$location', 'spinnerService', '$timeout'];
 
-    function beerController($location, spinnerService) {
+    function beerController($location, spinnerService, $timeout) {
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'beerController';
-        spinnerService.hide('MainSpinner');
+        spinnerService.show('MainSpinner');
         activate();
 
-        function activate() { }
+        function activate() {
+            $timeout(function () { spinnerService.hide('MainSpinner'); }, 1000);
+        }
     }
 })();
