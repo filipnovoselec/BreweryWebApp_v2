@@ -80,7 +80,7 @@ namespace BreweryWebApp
 
             app.UseStaticFiles();
 
-            app.UseStormpath();
+            //app.UseStormpath();
 
             app.UseMvc(routes =>
             {
