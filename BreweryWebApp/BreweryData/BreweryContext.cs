@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BreweryData.Models;
 
 namespace BreweryData
 {
@@ -13,5 +14,10 @@ namespace BreweryData
         {
             
         }
+
+        public DbSet<Beers> Beers { get; set; }
+        public DbSet<Pump>  Pumps { get; set; }
+        public DbSet<Temperatures> Temperatures { get; set; }
+        public DbSet<Recipes> Recipes { get; set; }
     }
 }

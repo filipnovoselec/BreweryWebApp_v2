@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BreweryData.Models
 {
-    class Beers
+    public partial class Beers
     {
         public Beers()
         {
-            this.Pump = new HashSet<Pump>();
+            this.Pumps = new HashSet<Pump>();
             this.Temperatures = new HashSet<Temperatures>();
         }
 
@@ -21,7 +21,7 @@ namespace BreweryData.Models
         public int Rating { get; set; }
         public string Picture { get; set; }
 
-        public virtual ICollection<Pump> Pump { get; set; }
+        public virtual ICollection<Pump> Pumps { get; set; }
         public virtual ICollection<Temperatures> Temperatures { get; set; }
     }
 }

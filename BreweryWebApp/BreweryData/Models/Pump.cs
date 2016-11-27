@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace BreweryData.Models
 {
-    class Pump
+    public partial class Pump
     {
+        public int Id { get; set; }
+        public int State { get; set; }
+        public DateTime Time { get; set; }
+        
+        public virtual Beers Beers { get; set; }
     }
 }
