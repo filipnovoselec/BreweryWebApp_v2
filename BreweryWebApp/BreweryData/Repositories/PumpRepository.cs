@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BreweryData.Repositories.IRepositories
+namespace BreweryData.Repositories
 {
-    class BeerRepository
+    class PumpRepository
     {
     }
 }

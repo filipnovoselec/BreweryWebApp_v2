@@ -55,14 +55,20 @@
     <Compile Include="Models\Recipes.cs" />
     <Compile Include="Models\Temperatures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BeerRepository.cs" />
+    <Compile Include="Repositories\IRepositories\IBeerRepository.cs" />
+    <Compile Include="Repositories\IRepositories\IPumpRepository.cs" />
+    <Compile Include="Repositories\IRepositories\IRecipeRepository.cs" />
+    <Compile Include="Repositories\IRepositories\ITemperatureRepository.cs" />
+    <Compile Include="Repositories\PumpRepository.cs" />
+    <Compile Include="Repositories\RecipeRepository.cs" />
+    <Compile Include="Repositories\TemperatureRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\IRepositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
