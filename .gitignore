@@ -284,3 +284,5 @@ __pycache__/
 # tools/
 stormpath.yaml
 apiKey.properties
+
+appsettings.json

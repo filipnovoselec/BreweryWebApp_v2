@@ -31,7 +31,13 @@
   },
 
   "frameworks": {
-    "net452": { }
+    "net452": {
+      "dependencies": {
+        "BreweryData": {
+          "target": "project"
+        }
+      }
+    }
   },
 
   "buildOptions": {
