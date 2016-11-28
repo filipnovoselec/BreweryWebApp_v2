@@ -5,15 +5,20 @@
         .module('BreweryApp')
         .controller('homepageController', controller);
 
-    controller.$inject = ['$location']; 
+    controller.$inject = ['$location','spinnerService','$timeout']; 
 
-    function controller($location) {
-        /* jshint validthis:true */
+    function controller($location,spinnerService,$timeout) {
         var vm = this;
         vm.title = 'controller';
+        
+        updateData();
 
-        activate();
+        function updateData() {
+            spinnerService.show('MainSpinner');
 
-        function activate() { }
+            //todo get data
+
+            $timeout(function () { spinnerService.hide('MainSpinner'); }, 1000);
+        }
     }
 })();
