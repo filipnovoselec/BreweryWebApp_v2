@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BreweryData.Models;
+using BreweryData.Repositories.IRepositories;
 
 namespace BreweryData.Repositories
 {
-    class RecipeRepository
+    public class RecipeRepository : IRecipeRepository
     {
         private readonly BreweryContext _breweryContext;
 
@@ -33,7 +34,7 @@ namespace BreweryData.Repositories
             //Todo
         }
 
-        public IQueryable GetAllRecipes()
+        public IQueryable<Recipes> GetAllRecipes()
         {
             return _breweryContext.Recipes;
         }

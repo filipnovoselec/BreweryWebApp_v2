@@ -7,11 +7,11 @@ using BreweryData.Models;
 
 namespace BreweryData.Repositories.IRepositories
 {
-    interface IRecipeRepository
+    public interface IRecipeRepository
     {
         void Add(Recipes recipe);
         void Remove(Recipes recipe);
         void Update(Recipes recipe);
-        IQueryable GetAllRecipes();
+        IQueryable<Recipes> GetAllRecipes();
     }
 }

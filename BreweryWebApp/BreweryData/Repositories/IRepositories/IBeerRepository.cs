@@ -7,13 +7,20 @@ using BreweryData.Models;
 
 namespace BreweryData.Repositories.IRepositories
 {
-    interface IBeerRepository
+    public interface IBeerRepository
     {
-        IQueryable GetCurrentBeer();
-        IQueryable GetAllBeers();
-        IQueryable GetLastNBeers(int n);
-        void Add(Beers beer);
-        void Remove(Beers beer);
-        void Update(Beers beer);
+        void AddBeer(Beers beer);
+        void DeleteBeer(Beers beer);
+        void UpdateBeer(Beers beer);
+        IQueryable<Beers> GetCurrentBeer();
+        IQueryable<Beers> GetAllBeers();
+
+        void DeletePump(Pump pump);
+        IQueryable<Pump> GetAllPumps();
+
+        void DeleteTemperature(Temperatures temp);
+        IQueryable<Temperatures> GetAllTemperatures();
+
+        void Save();
     }
 }
