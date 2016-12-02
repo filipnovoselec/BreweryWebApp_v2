@@ -5,15 +5,13 @@
         .module('BreweryApp')
         .controller('indexController', indexController);
 
-    indexController.$inject = ['$location']; 
+    indexController.$inject = ['$location','$scope']; 
 
-    function indexController($location) {
-        /* jshint validthis:true */
-        var vm = this;
-        vm.title = 'indexController';
+    function indexController($location, $scope) {
+        fetchRecipes();
 
-        activate();
-
-        function activate() { }
+        function fetchRecipes() {
+            //todo fetch recipes form recipes Controller
+        }
     }
 })();

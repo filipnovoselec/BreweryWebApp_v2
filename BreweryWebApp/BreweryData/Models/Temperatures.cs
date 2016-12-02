@@ -12,6 +12,6 @@ namespace BreweryData.Models
         public float Temp { get; set; }
         public DateTime Time { get; set; }
         
-        public virtual Beers Beers { get; set; }
+        public virtual Beers Beer { get; set; }
     }
 }
