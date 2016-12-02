@@ -13,5 +13,8 @@ namespace BreweryData.Repositories.IRepositories
         void Remove(Recipes recipe);
         void Update(Recipes recipe);
         IQueryable<Recipes> GetAllRecipes();
+        IEnumerable<Recipes> GetNRecipes(int n);
+
+        void Save();
     }
 }

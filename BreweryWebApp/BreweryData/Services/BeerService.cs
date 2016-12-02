@@ -21,7 +21,7 @@ namespace BreweryData.Services
 
         public Beers GetCurrentBeer()
         {
-            return _beerRepository.GetCurrentBeer().FirstOrDefault();
+            return _beerRepository.GetCurrentBeer();
         }
 
         public List<Beers> GetAllBeers()

@@ -13,7 +13,7 @@ namespace BreweryData
         public MapperConfig()
         {
             CreateMap<Beers, Beers>();
+            CreateMap<Recipes, Recipes>();
         }
-
     }
 }

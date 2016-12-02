@@ -15,23 +15,22 @@ namespace BreweryData.Repositories
         private readonly IMapper _mapper;
 
         public BeerRepository(
-            BreweryContext breweryContext, 
+            BreweryContext breweryContext,
             IMapper mapper)
         {
             this._breweryContext = breweryContext;
             this._mapper = mapper;
         }
 
-        public IQueryable<Beers> GetCurrentBeer()
+        public Beers GetCurrentBeer()
         {
-            return _breweryContext.Beers.Where(s => s.EndDate > DateTime.Now);
+            return _breweryContext.Beers.FirstOrDefault(s => s.EndDate > DateTime.Now);
         }
 
         public IQueryable<Beers> GetAllBeers()
         {
             return _breweryContext.Beers;
         }
-
 
         public void AddBeer(Beers beer)
         {
@@ -45,9 +44,13 @@ namespace BreweryData.Repositories
 
         public void UpdateBeer(Beers beer)
         {
-            var tempBeer = _breweryContext.Beers.First(s => s.Id == beer.Id);
-            //Todo sa Automapperom
+            var tempBeer = _breweryContext.Beers.Find(beer.Id);
             _mapper.Map<Beers, Beers>(beer, tempBeer);
+        }
+
+        public IEnumerable<Beers> GetBestBeers(int n)
+        {
+            return _breweryContext.Beers.OrderByDescending(beer => beer.Rating).Take(n);
         }
 
         public void DeleteTemperature(Temperatures temp)
@@ -55,19 +58,30 @@ namespace BreweryData.Repositories
             _breweryContext.Temperatures.Remove(temp);
         }
 
-        public IQueryable<Temperatures> GetAllTemperatures()
+        public IQueryable<Temperatures> GetAllTemperaturesForBeer(int beerId)
         {
-            return _breweryContext.Temperatures;
+            return _breweryContext.Temperatures.Where(temp => temp.Beer.Id == beerId);
         }
+
+        public IEnumerable<Temperatures> GetLatestTemperaturesForBeer(int beerId, int n)
+        {
+            return _breweryContext.Temperatures.Where(temp => temp.Beer.Id == beerId).OrderByDescending(temp => temp.Time).Take(n);
+        }
+
 
         public void DeletePump(Pump pump)
         {
             _breweryContext.Pumps.Remove(pump);
         }
 
-        public IQueryable<Pump> GetAllPumps()
+        public IQueryable<Pump> GetAllPumpsForBeer(int beerId)
         {
-            return _breweryContext.Pumps;
+            return _breweryContext.Pumps.Where(pump => pump.Beer.Id == beerId);
+        }
+
+        public IEnumerable<Pump> GetLatestPumpsForBeer(int beerId, int n)
+        {
+            return _breweryContext.Pumps.Where(pump => pump.Beer.Id == beerId).OrderByDescending(pump => pump.Time).Take(n);
         }
 
         public void Save()

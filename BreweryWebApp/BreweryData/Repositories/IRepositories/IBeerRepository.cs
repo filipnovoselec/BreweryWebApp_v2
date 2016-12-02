@@ -12,14 +12,17 @@ namespace BreweryData.Repositories.IRepositories
         void AddBeer(Beers beer);
         void DeleteBeer(Beers beer);
         void UpdateBeer(Beers beer);
-        IQueryable<Beers> GetCurrentBeer();
+        Beers GetCurrentBeer();
         IQueryable<Beers> GetAllBeers();
+        IEnumerable<Beers> GetBestBeers(int n);
 
         void DeletePump(Pump pump);
-        IQueryable<Pump> GetAllPumps();
+        IQueryable<Pump> GetAllPumpsForBeer(int beerId);
+        IEnumerable<Pump> GetLatestPumpsForBeer(int beerId, int n);
 
         void DeleteTemperature(Temperatures temp);
-        IQueryable<Temperatures> GetAllTemperatures();
+        IQueryable<Temperatures> GetAllTemperaturesForBeer(int beerId);
+        IEnumerable<Temperatures> GetLatestTemperaturesForBeer(int beerId, int n);
 
         void Save();
     }
