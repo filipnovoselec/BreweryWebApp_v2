@@ -5,17 +5,23 @@
         .module('BreweryApp')
         .controller('recipesController', recipesController);
 
-    recipesController.$inject = ['$location', 'spinnerService', '$timeout'];
+    recipesController.$inject = ['$location', 'spinnerService', '$timeout', '$http', '$scope'];
 
-    function recipesController($location, spinnerService, $timeout) {
-        /* jshint validthis:true */
-        var vm = this;
-        vm.title = 'recipesController';
-        spinnerService.show('MainSpinner');
-        activate();
+    function recipesController($location, spinnerService, $timeout, $http, $scope) {
+        spinnerService.show("MainSpinner");
+        fetchRecipes();
 
-        function activate() {
-            $timeout(function () { spinnerService.hide('MainSpinner'); }, 300);
+        function fetchRecipes() {
+            $http.get("Recipe/GetAllRecipeNames")
+                .success(function (response) {
+                    $scope.recipeNames = response;
+                })
+                .error(function (response) {
+                    console.log(response);
+                })
+                .then(function () {
+                    spinnerService.hide("MainSpinner");
+                });
         }
     }
 })();
