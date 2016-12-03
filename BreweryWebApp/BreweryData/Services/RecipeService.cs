@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BreweryData.Models;
 using BreweryData.Repositories;
 using BreweryData.Repositories.IRepositories;
+using BreweryData.Services.IServices;
 
 namespace BreweryData.Services
 {
-    public class RecipeService
+    public class RecipeService : IRecipeService
     {
         private readonly IRecipeRepository _recipeRepository;
 
@@ -18,9 +20,14 @@ namespace BreweryData.Services
             this._recipeRepository = recipeRepository;
         }
 
-        public List<string> GetAllRecipeNames()
+        public IEnumerable<Recipes> GetAllRecipes()
         {
-            return _recipeRepository.GetAllRecipes().Select(s => s.Name).ToList();
+            return _recipeRepository.GetAllRecipes();
+        }
+
+        public Recipes GetRecipeDetails(int id)
+        {
+            return _recipeRepository.GetAllRecipes().First(rec => rec.Id == id);
         }
     }
 }

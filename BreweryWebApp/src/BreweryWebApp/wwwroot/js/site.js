@@ -33,7 +33,7 @@ BreweryApp.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('recipeDetails',
         {
-            url: '/recipeDetails/{name}',
+            url: '/recipeDetails/{id}',
             templateUrl: '/templates/recipeDetailsPage.html',
             controller: 'recipeDetailsController'
         })
