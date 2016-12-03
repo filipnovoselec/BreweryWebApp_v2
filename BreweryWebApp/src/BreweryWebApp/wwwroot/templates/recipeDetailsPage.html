@@ -1,10 +1,22 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
     <title></title>
+    <meta charset="utf-8" />
+    <link href="../css/recipeDetailsPage.css" rel="stylesheet" />
 </head>
 <body>
+    <h1>{{recipe.name}}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="profile"><h2>Profil</h2><p style="white-space: pre-line">{{recipe.profile}}</p></div>
+                <div id="ingredients"><h2>Sastojci</h2><p style="white-space: pre-line">{{recipe.ingredients}}</p></div>
+            </div>
+            <img src="{{recipe.picture}}" class="col-md-6 img-rounded img-responsive" id="image" />
+        </div>
+        <div id="instructions"><h2>Upute</h2><p style="white-space: pre-line">{{recipe.instructions}}</p></div>
+    </div>
 
 </body>
 </html>
