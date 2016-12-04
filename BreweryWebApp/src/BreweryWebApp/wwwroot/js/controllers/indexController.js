@@ -5,10 +5,13 @@
         .module('BreweryApp')
         .controller('indexController', indexController);
 
-    indexController.$inject = ['$location', '$scope', '$http'];
+    indexController.$inject = ['$location', '$scope', '$http', '$rootScope'];
 
-    function indexController($location, $scope, $http) {
+    function indexController($location, $scope, $http, $rootScope) {
         fetchRecipes();
+        $rootScope.$on("refreshNames", function() {
+            fetchRecipes();
+        })
 
         function fetchRecipes() {
             $http.get("Recipe/GetAllRecipeNames")

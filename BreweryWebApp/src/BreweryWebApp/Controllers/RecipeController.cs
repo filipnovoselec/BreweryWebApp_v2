@@ -46,5 +46,42 @@ namespace BreweryWebApp.Controllers
                 return NotFound(e.Message);
             }
         }
+
+        [HttpPost]
+        public IActionResult UpdateRecipe([FromBody]RecipeModel recipe)
+        {
+            var newRecipe = _mapper.Map<RecipeModel, Recipes>(recipe);
+            try
+            {
+                _recipeService.UpdateRecipe(newRecipe);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult AddNewRecipe([FromBody] RecipeModel recipe)
+        {
+            var newRecipe = new Recipes()
+            {
+                Name = recipe.Name,
+                Profile = recipe.Profile,
+                Picture = recipe.Picture,
+                Ingredients = recipe.Ingredients,
+                Instructions = recipe.Instructions
+            };
+            try
+            {
+                _recipeService.AddRecipe(newRecipe);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+            return Ok();
+        }
     }
 }

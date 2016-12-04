@@ -13,6 +13,7 @@ namespace BreweryWebApp.Configurations
         public ModelMapperConfig()
         {
             CreateMap<Recipes, RecipeNameModel>();
+            CreateMap<RecipeModel, Recipes>();
         }
     }
 }

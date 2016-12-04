@@ -29,5 +29,17 @@ namespace BreweryData.Services
         {
             return _recipeRepository.GetAllRecipes().First(rec => rec.Id == id);
         }
+
+        public void UpdateRecipe(Recipes recipe)
+        {
+            _recipeRepository.Update(recipe);
+            _recipeRepository.Save();
+        }
+
+        public void AddRecipe(Recipes recipe)
+        {
+            _recipeRepository.Add(recipe);
+            _recipeRepository.Save();
+        }
     }
 }

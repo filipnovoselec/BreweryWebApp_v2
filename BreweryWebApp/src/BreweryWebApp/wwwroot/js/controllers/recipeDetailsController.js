@@ -5,11 +5,15 @@
         .module('BreweryApp')
         .controller('recipeDetailsController', recipeDetailsController);
 
-    recipeDetailsController.$inject = ['$location', '$scope', 'spinnerService', '$stateParams', '$http'];
+    recipeDetailsController.$inject = ['$location', '$scope', 'spinnerService', '$stateParams', '$http', '$state'];
 
-    function recipeDetailsController($location, $scope, spinnerService, $stateParams, $http) {
+    function recipeDetailsController($location, $scope, spinnerService, $stateParams, $http, $state) {
         spinnerService.show('MainSpinner');
         getData();
+
+        $scope.editRecipe = function(id) {
+            $state.go('addEditRecipe', { id: id });
+        }
         
         function getData() {
 

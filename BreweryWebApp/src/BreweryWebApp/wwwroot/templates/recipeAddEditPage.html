@@ -7,8 +7,8 @@
 </head>
 <body>
     <input class="h1" id="recipeName"
-           type="text" ng-if="!newRecipe" ng-model="recipe.name" ng-required="true"
-           value="Novi Recept" />
+           type="text" ng-model="recipe.name" ng-required="true"
+           />
 
     <div class="container">
         <div class="row">
@@ -38,12 +38,12 @@
             </textarea>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-default" id="submitButton">
+            <button class="btn btn-default" id="submitButton" ng-click="saveRecipe()">
                 Submit
             </button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-default" id="cancelButton">
+            <button class="btn btn-default" id="cancelButton" ng-click="cancelRecipe()">
                 Cancel
             </button>
         </div>

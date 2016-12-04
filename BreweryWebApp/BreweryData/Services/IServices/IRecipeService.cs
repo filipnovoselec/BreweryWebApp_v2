@@ -11,5 +11,7 @@ namespace BreweryData.Services.IServices
     {
         IEnumerable<Recipes> GetAllRecipes();
         Recipes GetRecipeDetails(int id);
+        void UpdateRecipe(Recipes recipe);
+        void AddRecipe(Recipes recipe);
     }
 }
