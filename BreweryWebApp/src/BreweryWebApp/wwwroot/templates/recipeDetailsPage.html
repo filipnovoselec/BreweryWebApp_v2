@@ -15,7 +15,15 @@
             </div>
             <img src="{{recipe.picture}}" class="col-md-6 img-rounded img-responsive" id="image" />
         </div>
-        <div id="instructions"><h2>Upute</h2><p style="white-space: pre-line">{{recipe.instructions}}</p></div>
+        <div id="instructions">
+            <h2>Upute</h2>
+            <p style="white-space: pre-line">{{recipe.instructions}}</p>
+        </div>
+        <div > <!-- if user -->
+            <button class="btn btn-default" id="editButton">
+                Uredi recept
+            </button>
+        </div>
     </div>
 
 </body>
