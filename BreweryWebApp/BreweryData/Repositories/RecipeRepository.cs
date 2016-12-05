@@ -28,7 +28,7 @@ namespace BreweryData.Repositories
             _breweryContext.SaveChanges();
         }
 
-        public void Remove(Recipes recipe)
+        public void Delete(Recipes recipe)
         {
             _breweryContext.Recipes.Remove(recipe);
             _breweryContext.SaveChanges();

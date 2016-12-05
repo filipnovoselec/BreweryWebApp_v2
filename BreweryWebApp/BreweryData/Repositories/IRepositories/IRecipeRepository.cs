@@ -10,7 +10,7 @@ namespace BreweryData.Repositories.IRepositories
     public interface IRecipeRepository
     {
         void Add(Recipes recipe);
-        void Remove(Recipes recipe);
+        void Delete(Recipes recipe);
         void Update(Recipes recipe);
         IQueryable<Recipes> GetAllRecipes();
         IEnumerable<Recipes> GetNRecipes(int n);

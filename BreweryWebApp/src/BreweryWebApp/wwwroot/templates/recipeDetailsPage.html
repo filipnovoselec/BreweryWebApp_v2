@@ -20,9 +20,16 @@
             <p style="white-space: pre-line">{{recipe.instructions}}</p>
         </div>
         <div > <!-- if user -->
-            <button class="btn btn-default" id="editButton" ng-click="editRecipe(recipe.id)">
-                Uredi recept
-            </button>
+            <div class="col-md-6">
+                <button class="btn btn-default" id="editButton" ng-click="editRecipe(recipe.id)">
+                    Uredi recept
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-default" id="deleteButton" ng-click="deleteRecipe(recipe.id)">
+                    Obriši recept
+                </button>
+            </div>
         </div>
     </div>
 

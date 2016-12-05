@@ -13,5 +13,6 @@ namespace BreweryData.Services.IServices
         Recipes GetRecipeDetails(int id);
         void UpdateRecipe(Recipes recipe);
         void AddRecipe(Recipes recipe);
+        void DeleteRecipe(Recipes recipe);
     }
 }

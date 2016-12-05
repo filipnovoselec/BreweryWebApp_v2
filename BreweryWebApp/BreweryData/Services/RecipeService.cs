@@ -41,5 +41,11 @@ namespace BreweryData.Services
             _recipeRepository.Add(recipe);
             _recipeRepository.Save();
         }
+
+        public void DeleteRecipe(Recipes recipe)
+        {
+            _recipeRepository.Delete(recipe);
+            _recipeRepository.Save();
+        }
     }
 }

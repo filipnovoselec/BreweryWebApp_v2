@@ -6,6 +6,7 @@ using AutoMapper;
 using BreweryData.Models;
 using BreweryData.Services.IServices;
 using BreweryWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BreweryWebApp.Controllers
@@ -47,6 +48,7 @@ namespace BreweryWebApp.Controllers
             }
         }
 
+        //[Authorize]
         [HttpPost]
         public IActionResult UpdateRecipe([FromBody]RecipeModel recipe)
         {
@@ -57,11 +59,12 @@ namespace BreweryWebApp.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return BadRequest(e.Message);
             }
             return Ok();
         }
 
+        //[Authorize]
         [HttpPost]
         public IActionResult AddNewRecipe([FromBody] RecipeModel recipe)
         {
@@ -79,7 +82,23 @@ namespace BreweryWebApp.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return BadRequest(e.Message);
+            }
+            return Ok();
+        }
+
+        //[Authorize]
+        [HttpPost]
+        public IActionResult DeleteRecipe(int id)
+        {
+            var recipe =_recipeService.GetRecipeDetails(id);
+            try
+            {
+                _recipeService.DeleteRecipe(recipe);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
             return Ok();
         }
