@@ -17,7 +17,7 @@
             getData(recipeId);
         }
 
-        $scope.saveRecipe = function () {
+        $scope.saveRecipe = function() {
             var recipe = {
                 Id: $scope.recipe.id,
                 Name: $scope.recipe.name,
@@ -25,14 +25,14 @@
                 Picture: $scope.recipe.picture,
                 Ingredients: $scope.recipe.ingredients,
                 Instructions: $scope.recipe.instructions
-            }
-            if (recipe.Id != null) {
+            };
+            if (recipe.Id !== null) {
                 $http({
                         method: "POST",
                         url: "Recipe/UpdateRecipe",
                         data: recipe
                     })
-                    .success(function (response) {
+                    .success(function(response) {
                         $rootScope.$emit("refreshNames", {});
                         $state.go('allRecipes');
                     })
@@ -42,25 +42,25 @@
                     });
             } else {
                 $http({
-                    method: "POST",
-                    url: "Recipe/AddNewRecipe",
-                    data: recipe
-                })
-                    .success(function (response) {
+                        method: "POST",
+                        url: "Recipe/AddNewRecipe",
+                        data: recipe
+                    })
+                    .success(function(response) {
                         $rootScope.$emit("refreshNames", {});
                         $state.go('allRecipes');
                     })
-                    .error(function (response) {
+                    .error(function(response) {
                         console.log(response);
                         $state.reload();
                     });
             }
-            
-        }
 
-        $scope.cancelRecipe = function () {
+        };
+
+        $scope.cancelRecipe = function() {
             $state.go('allRecipes');
-        }
+        };
 
         function getData(recipeId) {
 

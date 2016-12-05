@@ -11,25 +11,25 @@
         spinnerService.show('MainSpinner');
         getData();
 
-        $scope.editRecipe = function (id) {
+        $scope.editRecipe = function(id) {
             $state.go('addEditRecipe', { id: id });
-        }
+        };
 
-        $scope.deleteRecipe = function (id) {
+        $scope.deleteRecipe = function(id) {
             $http({
-                method: "POST",
-                url: "Recipe/DeleteRecipe",
-                params: { id: id }
-            })
-                .success(function (response) {
+                    method: "POST",
+                    url: "Recipe/DeleteRecipe",
+                    params: { id: id }
+                })
+                .success(function(response) {
                     $rootScope.$emit("refreshNames", {});
                     $state.go("allRecipes");
                 })
-                .error(function (response) {
+                .error(function(response) {
                     console.log(response);
                     $state.reload();
                 });
-        }
+        };
 
         function getData() {
 
