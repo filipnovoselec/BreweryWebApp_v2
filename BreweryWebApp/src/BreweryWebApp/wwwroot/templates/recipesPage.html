@@ -6,6 +6,30 @@
     <link href="../css/recipesPage.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>RecipesPage</h1>
+<h1>RecipesPage</h1>
+<div ng-repeat="recipe in recipeNames">
+    <a class="recipeLink" ui-sref="recipeDetails({id:{{recipe.id}}})">
+        <div class="square">
+            <div class="content">
+                <div class="table">
+                    <div class="table-cell">
+                        <div id="recipeCard">{{recipe.name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+    <a class="recipeLink" ui-sref="addEditRecipe({id: 0})">
+        <div class="square">
+            <div class="content">
+                <div class="table">
+                    <div class="table-cell">
+                        <div id="addRecipeButton">+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
 </body>
 </html>

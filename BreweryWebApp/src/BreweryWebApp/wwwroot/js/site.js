@@ -33,9 +33,18 @@ BreweryApp.config(function($stateProvider, $urlRouterProvider) {
         })
         .state('recipeDetails',
         {
-            url: '/recipeDetails/{name}',
+            url: '/recipeDetails/{id}',
             templateUrl: '/templates/recipeDetailsPage.html',
             controller: 'recipeDetailsController'
+        })
+        .state('addEditRecipe',
+        {
+            url: '/addEditRecipe/{id}',
+            templateUrl: '/templates/recipeAddEditPage.html',
+            controller: 'recipeAddEditController',
+            //sp: {
+            //    authenticate: true
+            //}
         })
         .state('beer',
         {

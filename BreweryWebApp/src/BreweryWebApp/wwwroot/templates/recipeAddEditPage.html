@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../css/recipeAddEditPage.css" rel="stylesheet" />
+</head>
+<body>
+    <input class="h1" id="recipeName"
+           type="text" ng-model="recipe.name" ng-required="true"
+           />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="profile">
+                    <h2>Profil</h2>
+                    <textarea id="recipeProfile" ng-model="recipe.profile" ng-required="true">
+                        Profil piva
+                    </textarea>
+                </div>
+                <div id="ingredients">
+                    <h2>Sastojci</h2>
+                    <textarea id="recipeIngredients" ng-model="recipe.ingredients" ng-required="true">
+                        Sastojci piva
+                    </textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="{{recipe.picture}}" class="img-rounded img-responsive" id="image" />
+                <input id="recipeImage" ng-model="recipe.picture" ng-required="true"/>
+            </div>
+        </div>
+        <div id="instructions">
+            <h2>Upute</h2>
+            <textarea id="recipeInstructions" ng-model="recipe.instructions" ng-required="true">
+                Upute za izradu piva
+            </textarea>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-default" id="submitButton" ng-click="saveRecipe()">
+                Submit
+            </button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-default" id="cancelButton" ng-click="cancelRecipe()">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

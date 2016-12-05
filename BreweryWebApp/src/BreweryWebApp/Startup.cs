@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Autofac.Features.ResolveAnything;
+using AutoMapper;
 using BreweryData;
+using BreweryData.Repositories;
+using BreweryData.Repositories.IRepositories;
+using BreweryData.Services;
+using BreweryData.Services.IServices;
+using BreweryWebApp.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +40,7 @@ namespace BreweryWebApp
             }
             Configuration = builder.Build();
 
-            AutoMapper.Mapper.Initialize(s => s.AddProfile<MapperConfig>());
+            //AutoMapper.Mapper.Initialize(s => s.AddProfile<MapperConfig>());
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -64,8 +70,20 @@ namespace BreweryWebApp
 
             services.AddScoped<BreweryContext>(s => new BreweryContext(Configuration["Data:ConnectionString"]));
 
+            var config = new MapperConfiguration(cfg =>
+                        {
+                            cfg.AddProfile<MapperConfig>();
+                            cfg.AddProfile<ModelMapperConfig>();
+                        });
+
+            services.AddSingleton<IMapper>(s => new Mapper(config));
+
             var builder = new ContainerBuilder();
-            builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
+            builder.RegisterType<RecipeRepository>().As<IRecipeRepository>();
+            builder.RegisterType<RecipeService>().As<IRecipeService>();
+            builder.RegisterType<BeerRepository>().As<IBeerRepository>();
+            //builder.RegisterType<BeerService>().As<IBeerService>();
+
             builder.Populate(services);
 
             var container = builder.Build();
