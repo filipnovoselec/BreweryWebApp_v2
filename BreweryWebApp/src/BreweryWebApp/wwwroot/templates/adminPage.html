@@ -6,6 +6,27 @@
     <link href="../css/adminPage.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Administrator</h1>
+<h1 class="h1">Administratorske opcije</h1>
+<div class="container">
+    <div class="row optionsContainer" id="beerOptions">
+        <div class="col-md-3 title">
+            <h2 class="h2">Proizvodnja piva</h2>
+        </div>
+        <div class="col-md-9">
+            <div>trenutni podaci</div>
+            <button class="btn btn-default" ng-click="startNewBeer()">Započni novo pivo</button>
+        </div>
+
+    </div>
+    <div class="divider"></div>
+    <div class="row optionsContainer" id="recipeOptions">
+        <div class="col-md-3 title">
+            <h2 class="h2">Upravljanje receptima</h2>
+        </div>
+        <div class="col-md-9">
+            <div>neki sadržaj</div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -82,7 +82,7 @@ namespace BreweryWebApp
             builder.RegisterType<RecipeRepository>().As<IRecipeRepository>();
             builder.RegisterType<RecipeService>().As<IRecipeService>();
             builder.RegisterType<BeerRepository>().As<IBeerRepository>();
-            //builder.RegisterType<BeerService>().As<IBeerService>();
+            builder.RegisterType<BeerService>().As<IBeerService>();
 
             builder.Populate(services);
 

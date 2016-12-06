@@ -1,0 +1,21 @@
+﻿body {
+}
+
+#beerName {
+    min-width: 500px;
+}
+
+#startDate {
+    min-width: 100%;
+}
+#endDate {
+    min-width: 100%;
+}
+
+#buttonRow {
+    margin-top: 50px;
+}
+
+#createButton {
+    min-width: 100%;
+}

@@ -1,2 +1,22 @@
 ﻿body {
 }
+
+.optionsContainer{
+    border-bottom: 1px solid grey;
+    padding: 0px;
+}
+
+.title {
+    /*border-right: 1px solid grey;*/
+}
+
+.btn {
+    width: 100%;
+}
+
+.col-md-9 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-left: 1px solid grey;
+    min-height: 100%;
+}

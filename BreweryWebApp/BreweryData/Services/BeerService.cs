@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using BreweryData.Models;
 using BreweryData.Repositories.IRepositories;
+using BreweryData.Services.IServices;
 
 namespace BreweryData.Services
 {
-    public class BeerService
+    public class BeerService : IBeerService
     {
         private readonly IBeerRepository _beerRepository;
 

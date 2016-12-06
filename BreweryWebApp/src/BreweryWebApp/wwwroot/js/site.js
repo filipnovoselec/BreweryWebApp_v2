@@ -9,7 +9,7 @@ BreweryApp.run(function ($stormpath) {
     });
 });
 
-BreweryApp.config(function($stateProvider, $urlRouterProvider) {
+BreweryApp.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -51,6 +51,15 @@ BreweryApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/beer',
             templateUrl: '/templates/beerPage.html',
             controller: 'beerController',
+            //sp: {
+            //    authenticate: true
+            //}
+        })
+        .state('addNewBeer',
+        {
+            url: '/createNewBeer',
+            templateUrl: '/templates/startBeerPage.html',
+            controller: 'startBeerController'
             //sp: {
             //    authenticate: true
             //}

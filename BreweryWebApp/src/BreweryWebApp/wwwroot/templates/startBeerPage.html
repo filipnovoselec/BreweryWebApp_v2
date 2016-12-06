@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../css/startBeerPage.css" rel="stylesheet" />
+</head>
+<body>
+<h1 class="h1">Započni novo pivo</h1>
+<div>
+    <h2 class="h2">Naziv piva</h2>
+    <input id="beerName" class="h2" type="text" ng-model="beer.name" value="Sada"/>
+</div>
+<div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+            <h3 class="h3">Datum početka</h3>
+            <input id="startDate" type="date" ng-model="beer.startDate"/>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+            <h3 class="h3">Datum kraja</h3>
+            <input id="endDate" type="date" ng-model="beer.endDate"/>
+        </div>
+    </div>
+    <div id="buttonRow" class="row col-md-6 col-md-offset-3">
+        <button id="createButton" class="btn btn-default" ng-click="startBeer()">
+            Započni proizvodnju
+        </button>
+    </div>
+</div>
+</body>
+</html>

@@ -5,9 +5,12 @@
         .module('BreweryApp')
         .controller('adminController', adminController);
 
-    adminController.$inject = ['$location']; 
+    adminController.$inject = ['$location','$scope','$state']; 
 
-    function adminController($location) {
+    function adminController($location, $scope, $state) {
         
+        $scope.startNewBeer = function() {
+            $state.go('addNewBeer');
+        }
     }
 })();
