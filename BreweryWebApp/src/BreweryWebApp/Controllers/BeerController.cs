@@ -38,5 +38,17 @@ namespace BreweryWebApp.Controllers
             }
             return Ok();
         }
+
+        [HttpGet]
+        public IActionResult GetCurrentBeer()
+        {
+            var currentBeer = _beerService.GetCurrentBeer();
+
+            if (currentBeer != null)
+            {
+                return Ok();
+            }
+            else return NotFound();
+        }
     }
 }

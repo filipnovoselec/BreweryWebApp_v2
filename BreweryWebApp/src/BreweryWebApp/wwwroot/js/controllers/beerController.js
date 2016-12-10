@@ -5,17 +5,27 @@
         .module('BreweryApp')
         .controller('beerController', beerController);
 
-    beerController.$inject = ['$location', 'spinnerService', '$timeout'];
+    beerController.$inject = ['$location', 'spinnerService', '$timeout', '$http', '$scope'];
 
-    function beerController($location, spinnerService, $timeout) {
-        /* jshint validthis:true */
-        var vm = this;
-        vm.title = 'beerController';
-        spinnerService.show('MainSpinner');
-        activate();
+    function beerController($location, spinnerService, $timeout, $http, $scope) {
+        spinnerService.show("MainSpinner");
 
-        function activate() {
-            $timeout(function () { spinnerService.hide('MainSpinner'); }, 1000);
+        updateData()
+            .then(function() {
+                spinnerService.hide("MainSpinner");
+            });
+
+        function updateData() {
+            $http({
+                    method: "GET",
+                    url: "Beet/GetCurrentBeer"
+                })
+                .success(function(response) {
+                    $scope.beer = response;
+                })
+                .error(function(response) {
+
+                });
         }
     }
 })();
