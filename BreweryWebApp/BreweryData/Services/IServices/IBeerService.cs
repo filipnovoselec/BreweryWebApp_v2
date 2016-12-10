@@ -11,5 +11,6 @@ namespace BreweryData.Services.IServices
     {
         Beers GetCurrentBeer();
         List<Beers> GetAllBeers();
+        void AddNewBeer(Beers beer);
     }
 }

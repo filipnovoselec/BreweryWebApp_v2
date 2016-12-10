@@ -63,7 +63,9 @@
         };
 
         function getData(recipeId) {
-
+            if ($scope.beer.name != null || $scope.beer.startDate != null || $scope.beer.start) {
+                
+            }
             $http({
                 method: "GET",
                 url: "Recipe/GetRecipeForId",

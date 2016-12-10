@@ -30,6 +30,11 @@ namespace BreweryData.Services
             return _beerRepository.GetAllBeers().ToList();
         }
 
+        public void AddNewBeer(Beers beer)
+        {
+            _beerRepository.AddBeer(beer);
+            _beerRepository.Save();
+        }
 
     }
 }

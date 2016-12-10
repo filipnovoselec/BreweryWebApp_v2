@@ -28,7 +28,14 @@ namespace BreweryWebApp.Controllers
         [HttpPost]
         public IActionResult CreateNewBeer([FromBody]Beers beer)
         {
-            //todo
+            try
+            {
+                _beerService.AddNewBeer(beer);
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception.Message);
+            }
             return Ok();
         }
     }

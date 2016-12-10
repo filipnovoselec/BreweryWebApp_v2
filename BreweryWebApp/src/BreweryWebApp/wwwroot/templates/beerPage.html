@@ -1,11 +1,27 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <title>Beer Page</title>
     <meta charset="utf-8" />
-    <title></title>
     <link href="../css/beerPage.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>BeerPage</h1>
+    <h1 class="h1">{{Beer.Name}}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 " id="progressbar">
+                <div class="progress progress-striped active">
+                    <div class="progress-bar" ng-style="progress"></div>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="clock"></div>
+            </div>
+        </div>
+        <canvas id="line" class="chart chart-line" chart-data="data"
+                chart-labels="labels" chart-series="series" chart-options="options"
+                chart-dataset-override="datasetOverride" chart-click="onClick"></canvas>
+    </div>
+
 </body>
 </html>
