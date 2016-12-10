@@ -24,7 +24,7 @@ namespace BreweryData.Repositories
 
         public Beers GetCurrentBeer()
         {
-            return _breweryContext.Beers.FirstOrDefault(s => s.EndDate > DateTime.Now);
+            return _breweryContext.Beers.FirstOrDefault(s => s.EndDate >= DateTime.Now);
         }
 
         public IQueryable<Beers> GetAllBeers()
