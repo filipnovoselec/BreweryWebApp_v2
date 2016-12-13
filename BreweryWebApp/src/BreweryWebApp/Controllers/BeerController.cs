@@ -43,9 +43,14 @@ namespace BreweryWebApp.Controllers
         public IActionResult GetCurrentBeer()
         {
             var currentBeer = _beerService.GetCurrentBeer();
+            
 
             if (currentBeer != null)
             {
+                var beer = _mapper.Map<Beers, BeerModel>(currentBeer);
+
+                beer.AvgTemperature = _beerService.GetAvgTemperature(beer.Id);
+
                 return Ok();
             }
             else return NotFound();

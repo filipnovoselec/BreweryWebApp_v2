@@ -14,6 +14,11 @@ namespace BreweryWebApp.Configurations
         {
             CreateMap<Recipes, RecipeNameModel>();
             CreateMap<RecipeModel, Recipes>();
+            CreateMap<Beers, BeerModel>()
+                .ForMember(dest => dest.Temperatures, opt => opt.Ignore())
+                .ForMember(dest => dest.ReadTimes, opt => opt.Ignore())
+                .ForMember(dest => dest.AvgTemperature, opt => opt.Ignore())
+                .ForMember(dest => dest.Pumps, opt => opt.Ignore());
         }
     }
 }
