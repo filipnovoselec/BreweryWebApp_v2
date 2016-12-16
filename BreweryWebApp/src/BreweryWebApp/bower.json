@@ -16,7 +16,8 @@
     "jquery.countdown": "*",
     "flipclock": "*",
     "signalr": "*",
-    "stormpath-sdk-angularjs": "*"
+    "stormpath-sdk-angularjs": "*",
+    "highcharts": "*"
   },
   "resolutions": {
     "jquery": "1.9.1 - 3"

@@ -7,12 +7,17 @@
 }
 
 #recentBeerWidget {
-    min-height: 300px;
+    min-height: 16vw;
 }
 
 #currentBeerWidget {
-    min-height: 300px;
+    min-height: 16vw;
+    max-height: 16vw;
 }
+
 #banner {
     padding-bottom: 400px;
+}
+.chart-container {
+    
 }

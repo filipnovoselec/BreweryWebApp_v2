@@ -88,5 +88,10 @@ namespace BreweryData.Repositories
         {
             _breweryContext.SaveChanges();
         }
+
+        public Beers GetBeer(int beerId)
+        {
+            return _breweryContext.Beers.FirstOrDefault(b => b.Id == beerId);
+        }
     }
 }

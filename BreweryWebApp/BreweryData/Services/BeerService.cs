@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,16 +72,51 @@ namespace BreweryData.Services
             var pumps = _beerRepository.GetAllPumpsForBeer(beerId);
             double pumpOnTime = 0;
 
-            foreach (var pump in pumps.Where(p => p.State == 1))
+            foreach (var pump in pumps.Where(p => p.State == 1).ToList())
             {
-                var tPump = pumps.FirstOrDefault(p => p.Time.Date == pump.Time.Date && p.State == 0);
+                var tPump = pumps.FirstOrDefault(p => DbFunctions.TruncateTime(p.Time) == DbFunctions.TruncateTime(pump.Time) && p.State == 0);
                 if (tPump != null)
                 {
                     pumpOnTime += (tPump.Time - pump.Time).TotalSeconds;
                 }
-
             }
             return pumpOnTime;
+        }
+
+        public void DeletePumpsForBeer(int beerId)
+        {
+            var pumps = _beerRepository.GetAllPumpsForBeer(beerId);
+            foreach (var pump in pumps)
+            {
+                _beerRepository.DeletePump(pump);
+            }
+            _beerRepository.Save();
+        }
+
+        public void DeleteTempsForBeer(int beerId)
+        {
+            var temps = _beerRepository.GetAllTemperaturesForBeer(beerId);
+            foreach (var temp in temps)
+            {
+                _beerRepository.DeleteTemperature(temp);
+            }
+            _beerRepository.Save();
+        }
+
+        public void DeleteBeer(int beerId)
+        {
+            var beer = _beerRepository.GetBeer(beerId);
+            if (beer.Temperatures.Count > 0)
+            {
+                DeleteTempsForBeer(beerId);
+            }
+            if (beer.Pumps.Count > 0)
+            {
+                DeletePumpsForBeer(beerId);
+            }
+
+            _beerRepository.DeleteBeer(beer);
+            _beerRepository.Save();
         }
     }
 }

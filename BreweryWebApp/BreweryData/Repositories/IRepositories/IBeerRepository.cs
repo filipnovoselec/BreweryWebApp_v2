@@ -15,6 +15,7 @@ namespace BreweryData.Repositories.IRepositories
         Beers GetCurrentBeer();
         IQueryable<Beers> GetAllBeers();
         IEnumerable<Beers> GetBestBeers(int n);
+        Beers GetBeer(int beerId);
 
         void DeletePump(Pump pump);
         IQueryable<Pump> GetAllPumpsForBeer(int beerId);

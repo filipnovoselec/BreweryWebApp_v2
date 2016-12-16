@@ -18,5 +18,8 @@ namespace BreweryData.Services.IServices
         IEnumerable<Temperatures> GetNTemps(int beerId, int n);
         double GetAvgTemperature(int beerId);
         double GetTotalPumpOnTime(int beerId);
+        void DeletePumpsForBeer(int beerId);
+        void DeleteTempsForBeer(int beerId);
+        void DeleteBeer(int beerId);
     }
 }
