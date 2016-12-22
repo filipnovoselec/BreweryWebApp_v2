@@ -25,11 +25,8 @@
                         <h3 class="panel-title" ng-if="currentBeer != null">Pivo u izradi: {{currentBeer.name}}</h3>
                         <h3 class="panel-title" ng-if="currentBeer == null">Trenutno nema piva u izradi</h3>
                     </div>
-                    <div>
-                        <div class="col-sm-6">
-                            <!--<div class="chart-container">
-                                <canvas id="doughnut" class="chart chart-doughnut" chart-data="progress" chart-options="options"></canvas>
-                            </div>-->
+                    <div class="panel-body">
+                        <div id="chartColumn" class="col-sm-6">
                             <div id="container"></div>
                         </div>
                         <div id="info" class="col-sm-5 col-sm-offset-1 text-center">

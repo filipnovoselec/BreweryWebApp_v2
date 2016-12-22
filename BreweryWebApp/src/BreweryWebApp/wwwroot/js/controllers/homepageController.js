@@ -5,48 +5,53 @@
         .module('BreweryApp')
         .controller('homepageController', controller);
 
-    controller.$inject = ['$location', 'spinnerService', '$timeout', '$scope', '$http'];
+    controller.$inject = ['$location', 'spinnerService', '$timeout', '$scope', '$http', '$q'];
 
-    function controller($location, spinnerService, $timeout, $scope, $http) {
+    function controller($location, spinnerService, $timeout, $scope, $http, $q) {
         var vm = this;
         vm.title = 'controller';
         $scope.currentBeer = null;
-        $scope.options = {
-            cutoutPercentage: 70
-        };
-        updateData();
 
-        Highcharts.chart('container',
-            {
-                chart: {
-                    type: "pie"
-                },
-                title:false,
-                plotOptions: {
-                    pie: {
-                        center:["50%","50%"],
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: false
-                    }
-                },
-                series: [
+        updateData()
+            .then(function () {
+                Highcharts.chart('container',
                     {
-                        name: "Percentage Done",
-                        data: [0.3, 0.7],
-                        size: "100%",
-                        innerSize: "65%"
-                    }
-                ]
+                        chart: {
+                            type: "pie"
+                        },
+                        title: false,
+                        plotOptions: {
+                            pie: {
+                                innerSize: "65%",
+                                dataLabels: false
+                            }
+                        },
+                        exporting: {
+                            enabled: false
+                        },
+                        series: [
+                            {
+                                name:"Postotak završen",
+                                data:[
+                                {
+                                    name: "Gotovo",
+                                    y: $scope.currentBeer.percentageDone.toFixed(4) * 100,
+                                    color: "#66ff33"
+                                }, {
+                                    name: "Preostalo",
+                                    y: (1 - $scope.currentBeer.percentageDone.toFixed(4)) * 100
+                                }]
+                            }
+                        ]
+                    });
+                spinnerService.hide('MainSpinner');
             });
-
-
 
 
 
         function updateData() {
             spinnerService.show('MainSpinner');
-
+            var deferred = $q.defer();
             $scope.previousBeer = null;
 
             $http({
@@ -55,13 +60,13 @@
             })
                 .success(function (response) {
                     $scope.currentBeer = response;
-                    $scope.progress = [$scope.currentBeer.percentageDone, 1 - $scope.currentBeer.percentageDone];
+                    deferred.resolve();
                 })
                 .error(function (response) {
                     console.log(response);
                 });
 
-            spinnerService.hide('MainSpinner');
+            return deferred.promise;
         }
     }
 })();
