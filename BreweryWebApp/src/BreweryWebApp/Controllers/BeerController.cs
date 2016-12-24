@@ -54,7 +54,7 @@ namespace BreweryWebApp.Controllers
 
                 return Ok(beer);
             }
-            else return NotFound();
+            return NotFound();
         }
 
         [HttpGet]
@@ -65,7 +65,7 @@ namespace BreweryWebApp.Controllers
             {
                 return Ok(_mapper.Map<Beers, BeerMinModel>(currentBeer));
             }
-            else return NotFound();
+            return NotFound();
         }
     }
 }

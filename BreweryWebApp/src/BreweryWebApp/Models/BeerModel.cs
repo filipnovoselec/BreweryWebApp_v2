@@ -14,11 +14,10 @@ namespace BreweryWebApp.Models
         public double TimeToCompletion => (EndDate - DateTime.Now).TotalSeconds;
         public double PercentageDone => (DateTime.Now - StartDate).TotalSeconds / (EndDate - StartDate).TotalSeconds;
         public List<double> Temperatures { get; set; }
-        public List<string> ReadTimes { get; set; }
+        public List<DateTime> ReadTimes { get; set; }
         public double AvgTemperature { get; set; }
         public List<PumpModel> Pumps { get; set; }
         public double TotalPumpOnTime { get; set; }
         public double PercentagePumpOnTime => TotalPumpOnTime/(DateTime.Now - StartDate).TotalSeconds;
-
     }
 }
