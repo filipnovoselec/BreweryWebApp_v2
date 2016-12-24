@@ -1,3 +1,19 @@
 ﻿body {
     
 }
+.progress {
+    height: 100px;
+    position: relative;
+    top: 50%;
+    transform: translateY(15%);
+}
+#progressbar {
+    height: 100%;
+    vertical-align: middle;
+}
+.clock {
+    
+}
+#charts {
+    margin-top: 50px;
+}

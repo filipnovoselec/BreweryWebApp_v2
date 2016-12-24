@@ -1,6 +1,6 @@
 ﻿// Write your Javascript code.
 var BreweryApp = angular.module('BreweryApp',
-['ui.router', 'ngAnimate', 'stormpath', 'stormpath.templates', 'chart.js']);
+['ui.router', 'ngAnimate', 'stormpath', 'stormpath.templates']);
 
 BreweryApp.run(function ($stormpath) {
     $stormpath.uiRouter({
@@ -9,7 +9,7 @@ BreweryApp.run(function ($stormpath) {
     });
 });
 
-BreweryApp.config(function ($stateProvider, $urlRouterProvider) {
+BreweryApp.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -73,4 +73,4 @@ BreweryApp.config(function ($stateProvider, $urlRouterProvider) {
             //    authenticate: true
             //}
         });
-})
+});

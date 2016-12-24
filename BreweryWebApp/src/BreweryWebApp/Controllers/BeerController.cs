@@ -38,5 +38,34 @@ namespace BreweryWebApp.Controllers
             }
             return Ok();
         }
+
+        [HttpGet]
+        public IActionResult GetCurrentBeer()
+        {
+            var currentBeer = _beerService.GetCurrentBeer();
+            
+
+            if (currentBeer != null)
+            {
+                var beer = _mapper.Map<Beers, BeerModel>(currentBeer);
+
+                beer.AvgTemperature = _beerService.GetAvgTemperature(beer.Id);
+                beer.TotalPumpOnTime = _beerService.GetTotalPumpOnTime(beer.Id);
+
+                return Ok(beer);
+            }
+            return NotFound();
+        }
+
+        [HttpGet]
+        public IActionResult GetCurrentBeerMin()
+        {
+            var currentBeer = _beerService.GetCurrentBeer();
+            if (currentBeer != null)
+            {
+                return Ok(_mapper.Map<Beers, BeerMinModel>(currentBeer));
+            }
+            return NotFound();
+        }
     }
 }
