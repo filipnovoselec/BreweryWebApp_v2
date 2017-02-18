@@ -17,7 +17,9 @@
     "flipclock": "*",
     "signalr": "*",
     "stormpath-sdk-angularjs": "*",
-    "highcharts": "*"
+    "highcharts": "*",
+    "angular-circle-countdown": "*",
+    "jquery-throttle-debounce": "*" 
   },
   "resolutions": {
     "jquery": "1.9.1 - 3"

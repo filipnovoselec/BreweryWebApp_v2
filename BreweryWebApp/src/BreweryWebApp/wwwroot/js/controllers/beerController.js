@@ -86,11 +86,11 @@
                 .success(function (response) {
                     $scope.beer = response;
 
-                    var clock = $('.clock').FlipClock($scope.beer.timeToCompletion, {
-                        clockFace: 'DailyCounter',
-                        countdown: true,
-                        showSeconds: false
-                    });
+                    //var clock = $('.clock').FlipClock($scope.beer.timeToCompletion, {
+                    //    clockFace: 'DailyCounter',
+                    //    countdown: true,
+                    //    showSeconds: false
+                    //});
 
                     $scope.progress = { width: $scope.beer.percentageDone * 100 + '%' };
 

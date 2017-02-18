@@ -26,7 +26,7 @@
                 Ingredients: $scope.recipe.ingredients,
                 Instructions: $scope.recipe.instructions
             };
-            if (recipe.Id !== null) {
+            if (recipe.Id) {
                 $http({
                         method: "POST",
                         url: "Recipe/UpdateRecipe",
@@ -63,9 +63,6 @@
         };
 
         function getData(recipeId) {
-            if ($scope.beer.name != null || $scope.beer.startDate != null || $scope.beer.start) {
-                
-            }
             $http({
                 method: "GET",
                 url: "Recipe/GetRecipeForId",
